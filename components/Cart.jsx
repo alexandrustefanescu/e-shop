@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import React, { useRef } from 'react';
 import toast from 'react-hot-toast';
@@ -75,7 +74,7 @@ const Cart = () => {
 					{cartItems.length >= 1 &&
 						cartItems.map((item) => (
 							<div className='product' key={item._id}>
-								<Image
+								<img
 									src={urlFor(item?.image[0])}
 									alt='Cart Product Image'
 									className='cart-product-image'
