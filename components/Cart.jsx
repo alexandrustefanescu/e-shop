@@ -1,14 +1,12 @@
-import React, { useRef } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
+import React, { useRef } from 'react';
+import toast from 'react-hot-toast';
 import {
-	AiOutlineMinus,
-	AiOutlinePlus,
-	AiOutlineLeft,
-	AiOutlineShopping,
+	AiOutlineLeft, AiOutlineMinus,
+	AiOutlinePlus, AiOutlineShopping
 } from 'react-icons/ai';
 import { TiDeleteOutline } from 'react-icons/ti';
-import toast from 'react-hot-toast';
-
 import { useStateContext } from '../context/StateContext';
 import { urlFor } from '../lib/client';
 import getStripe from '../lib/getStripe';
@@ -61,7 +59,7 @@ const Cart = () => {
 					<div className='empty-cart'>
 						<AiOutlineShopping size={150} />
 						<h3>Your shopping bag is empty</h3>
-						<Link href='/'>
+						<Link href='/' passHref>
 							<button
 								type='button'
 								onClick={() => setShowCart(false)}
@@ -77,8 +75,9 @@ const Cart = () => {
 					{cartItems.length >= 1 &&
 						cartItems.map((item) => (
 							<div className='product' key={item._id}>
-								<img
+								<Image
 									src={urlFor(item?.image[0])}
+									alt='Cart Product Image'
 									className='cart-product-image'
 								/>
 								<div className='item-desc'>
